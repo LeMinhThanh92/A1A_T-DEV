@@ -25,6 +25,7 @@ const Loader = (Component) => (props) =>
 // Master Item
 const LoginPage = Loader(lazy(() => import('src/content/login')));
 
+const MasterItem = Loader(lazy(() => import('src/content/masteritem')));
 const MasterItemAdd = Loader(lazy(() => import('src/content/masteritem/masteritemadd')));
 const MasterItemHome = Loader(lazy(() => import('src/content/masteritem/masteritemhome')));
 
@@ -171,7 +172,8 @@ const routes: RouteObject[] = [
         children: [
             {
                 path: '',
-                element: <Navigate to="masteritem" replace/>
+                // element: <Navigate to="masteritem" replace/>
+                element: <MasterItem/>
             },
             {
                 path: 'masteritemadd',

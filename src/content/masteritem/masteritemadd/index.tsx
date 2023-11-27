@@ -11,7 +11,7 @@ function MasterItemAdd() {
       <Helmet>
         <title>Add Master Item</title>
       </Helmet>
-      <Container sx={{ mt: 3 }} maxWidth="lg">
+
         <Grid
           container
           direction={'row'}
@@ -47,7 +47,7 @@ function MasterItemAdd() {
           </Grid>
 
         </Grid>
-      </Container>
+
     </>
   );
 }

@@ -56,7 +56,7 @@ function LgPage() {
                    fullWidth
                    disableRipple
                    component={RouterLink}
-                   to="/masteritemgroup/masteritemgrouphome"
+                   to="../masteritem"
                    style={{ marginTop: '20px' }}
                  >
                    Login

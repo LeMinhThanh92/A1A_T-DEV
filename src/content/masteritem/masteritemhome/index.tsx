@@ -1,7 +1,7 @@
 import MSItemHome from "./msitemhome";
 import MasterItemView from "../msitemview";
 
-function MasterIteHome() {
+function MasterItemHome() {
     return(
       <>
           <MSItemHome />
@@ -10,4 +10,4 @@ function MasterIteHome() {
     )
 }
 
-export default  MasterIteHome;
+export default  MasterItemHome;

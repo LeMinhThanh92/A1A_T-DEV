@@ -15,6 +15,7 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
+    Popover,
     Toolbar,
     Typography
 } from "@mui/material";
@@ -23,6 +24,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {AccountBox as AccountBoxIcon, Home as HomeIcon, LogoutOutlined,} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu"
 import TableChartTwoToneIcon from "@mui/icons-material/TableChartTwoTone";
+import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
+
 
 const NavigationDrawer = (props: any) => {
     const theme = useTheme()
@@ -42,7 +45,7 @@ const NavigationDrawer = (props: any) => {
             text: 'Master Item',
             icon: <HomeIcon/>,
             onClick: () => {},
-           to:'../masteritem/masteritemhome'
+           to:'../../masteritem'
         },
         {
             text: 'Group',
@@ -57,31 +60,34 @@ const NavigationDrawer = (props: any) => {
             to:'../masteritemcolor/masteritemcolorhome'
         },
         {
-            text: 'Vendor',
+            text: 'Log out',
             icon: <LogoutOutlined/>,
             onClick: () => {},
-            to:'../masteritemvendor/masteritemvendorhome'
+            to:'../login'
         }
     ];
 
     return (<Box sx={{display: "flex"}}>
         <CssBaseline/>
-        <AppBar position={"fixed"} open={open}>
+        <AppBar position={"fixed"} open={open} sx={{backgroundColor:'#E0EEE0'}}>
             <Toolbar>
                 <IconButton
                     color={"inherit"}
                     aria-label={"open drawer"}
                     edge={"start"}
                     sx={{
+                        ml:2,
+                        color:'black',
                         marginRight: 5,
                         ...(open && {display: "none"})
                     }}
                     onClick={handleDrawerOpen}>
-                    <MenuIcon/>
+                    <MenuIcon sx={{color:'back'}}/>
                 </IconButton>
-                <Typography variant={"h6"} noWrap component={"div"}>
-                    {title}
+                <Typography variant={"h6"} sx={{color:'black'}}>
+                    Data
                 </Typography>
+
             </Toolbar>
         </AppBar>
         <Drawer variant={"permanent"} open={open}>
