@@ -69,11 +69,7 @@ const NavigationDrawer = (props: any) => {
 
     return (<Box sx={{display: "flex"}}>
         <CssBaseline/>
-<<<<<<< HEAD
         <AppBar position={"fixed"} open={open} sx={{backgroundColor:'#C1CDC1'}}>
-=======
-        <AppBar position={"fixed"} open={open} sx={{backgroundColor:'#838B83'}}>
->>>>>>> d36cceb5c053f8ec4809536c3c244a12775dc4c1
             <Toolbar>
                 <IconButton
                     color={"inherit"}
