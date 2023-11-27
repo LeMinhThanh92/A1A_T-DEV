@@ -6,6 +6,7 @@ import HomeDrawer from '@mui/material/Drawer';
 import DrawerAppBar, {AppBarProps as DrawerAppBarProps} from '@mui/material/AppBar';
 import Box from "@mui/material/Box";
 import {
+    Avatar,
     Button,
     CssBaseline,
     Divider,
@@ -14,17 +15,22 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
-    ListItemText,
+    ListItemText, Menu,
     Popover,
-    Toolbar,
+    Toolbar, Tooltip,
     Typography
 } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {AccountBox as AccountBoxIcon, Home as HomeIcon, LogoutOutlined,} from "@mui/icons-material";
+import {
+    AccountBox as AccountBoxIcon,
+    Home as HomeIcon,
+    LogoutOutlined,
+    VerifiedUserOutlined,
+} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu"
-import TableChartTwoToneIcon from "@mui/icons-material/TableChartTwoTone";
-import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
+import MenuItem from "@mui/material/MenuItem";
+const settings = ['Logout'];
 
 
 const NavigationDrawer = (props: any) => {
@@ -32,6 +38,17 @@ const NavigationDrawer = (props: any) => {
     // const router = useRouter();
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState("")
+
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
     const handleDrawerOpen = () => {
         setOpen(true)
     }
@@ -69,7 +86,7 @@ const NavigationDrawer = (props: any) => {
 
     return (<Box sx={{display: "flex"}}>
         <CssBaseline/>
-        <AppBar position={"fixed"} open={open} sx={{backgroundColor:'#C1CDC1'}}>
+        <AppBar position={"fixed"} open={open}>
             <Toolbar>
                 <IconButton
                     color={"inherit"}
@@ -82,14 +99,45 @@ const NavigationDrawer = (props: any) => {
                         ...(open && {display: "none"})
                     }}
                     onClick={handleDrawerOpen}>
-                    <MenuIcon sx={{color:'back'}}/>
+                    <MenuIcon />
                 </IconButton>
-                <Typography variant={"h6"} sx={{color:'black'}}>
-                    Data
+                <Typography sx={{fontSize:'2em',flexGrow:1,ml:2}}>
+                    Material Library
                 </Typography>
+
+                <Box sx={{ flexGrow: 0 }}>
+                    <Tooltip title="Open settings">
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                        </IconButton>
+                    </Tooltip>
+                    <Menu
+                        sx={{ mt: '45px' }}
+                        id="menu-appbar"
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
+                    >
+                        {settings.map((setting) => (
+                            <Link key={setting} to='../login' style={{textDecoration:'none',color:'inherit'}}> <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">{setting}</Typography>
+                            </MenuItem></Link>
+                        ))}
+                    </Menu>
+                </Box>
 
             </Toolbar>
         </AppBar>
+
         <Drawer variant={"permanent"} open={open}>
             <DrawerHeader>
                 <IconButton onClick={handleDrawerClose}>
